@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dynamic Datalist</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                font-family: sans-serif;
+            }
+            
+            input {
+                font-size: inherit;
+                padding: 0.5rem;
+                border: 1px black solid;
+                border-radius: 0.25rem;
+                margin: 0;
+                width: 100%
+            }
+        </style>
+        <script type="module">
+            const datalist = document.getElementById('l');
+
+            const ALL_OPTIONS = new Array(1000)
+                .fill('')
+                .map((_, i) => `Option ${i}`)
+                .forEach(o => {
+                    const el = document.createElement('option');
+                    el.value = o;
+                    datalist.appendChild(el);
+                });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Static Data List</h1>
+        </header>
+        <main>
+            <input id="i" list="l">
+            <datalist id="l"></datalist>
+        </main>
+    </body>
+</html>

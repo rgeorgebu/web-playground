@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dynamic Datalist</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                font-family: sans-serif;
+            }
+            
+            input {
+                font-size: inherit;
+                padding: 0.5rem;
+                border: 1px black solid;
+                border-radius: 0.25rem;
+                margin: 0;
+                width: 100%
+            }
+        </style>
+        <script type="module">
+            // Copypasta'd from https://levelup.gitconnected.com/debounce-in-javascript-improve-your-applications-performance-5b01855e086
+            function debounce(fn, wait) {
+                let timeout;
+
+                return (...args) => {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        fn(...args);
+                    }
+
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                }
+            }
+
+            globalThis.debounce = debounce;
+        </script>
+        <script type="module">
+            const ALL_OPTIONS = new Array(100)
+                .fill('')
+                .map((_, i) => `Option ${i}`);
+
+            function getOptionList(filter) {
+                return new Promise((resolve) => {
+                    const id = setTimeout(() => {
+                        clearTimeout(id);
+                        const filteredOptions = ALL_OPTIONS
+                            .filter(o => o.includes(filter));
+                        resolve(filteredOptions);
+                    }, 2000);
+                });
+            }
+
+            globalThis.getOptionList = getOptionList;
+        </script>
+        <script type="module">
+            const input = document.getElementById('i');
+            const datalist = document.getElementById('l');
+
+            function removeAllChildrenFrom(el) {
+                while (el.firstChild) {
+                    el.removeChild(el.firstChild);
+                }
+            }
+
+            async function handleInput(e) {
+                const value = e.currentTarget.value;
+                removeAllChildrenFrom(datalist);
+                const disabled = document.createElement('option');
+                disabled.value = 'Loading';
+                datalist.appendChild(disabled);
+                const options = await getOptionList(value);
+                removeAllChildrenFrom(datalist);
+                options.forEach((o) => {
+                    const optionEl = document.createElement('option');
+                    optionEl.value = o;
+                    datalist.appendChild(optionEl);
+                });
+            }
+            
+            input.addEventListener('input', handleInput);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Dynamic Data List</h1>
+        </header>
+        <main>
+            <input id="i" list="l">
+            <datalist id="l"></datalist>
+        </main>
+    </body>
+</html>
