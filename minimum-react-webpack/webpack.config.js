@@ -1,13 +1,16 @@
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import RazorPartialViewsWebpackPlugin from 'razor-partial-views-webpack-plugin';
+import { resolve } from 'path';
 
-export default () => ({
+export default (_, { mode }) => ({
 	entry: './src/index.jsx',
 	resolve: {
 		extensions: ['.jsx', '...']
 	},
 	output: {
-		clean: true
+		clean: true,
+		path: resolve('./test/wwwroot')
 	},
 	module: {
 		rules: [
@@ -21,8 +24,8 @@ export default () => ({
 							['@babel/preset-react', { runtime: 'automatic' }]
 						],
 						plugins: [
-							'react-refresh/babel'
-						]
+							mode === 'development' && 'react-refresh/babel'
+						].filter(Boolean)
 					}
 				},
 				exclude: /node_modules/
@@ -30,10 +33,15 @@ export default () => ({
 		]
 	},
 	plugins: [
-		new HtmlWebpackPlugin(),
-		new ReactRefreshWebpackPlugin()
-	],
+		// new HtmlWebpackPlugin(),
+		mode === 'development' && new ReactRefreshWebpackPlugin()
+	].filter(Boolean),
 	devServer: {
-		open: true,
-	}
+		client: {
+			webSocketURL: 'ws://localhost:8080/ws'
+		},
+		devMiddleware: {
+			writeToDisk: true
+		}
+	},
 });

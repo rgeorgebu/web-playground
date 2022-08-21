@@ -23,6 +23,7 @@
   ],
   "devDependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "razor-partial-views-webpack-plugin": "^3.0.1",
     "react-refresh": "^0.14.0"
   },
   "type": "module"

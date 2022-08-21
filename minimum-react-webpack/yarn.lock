@@ -3660,6 +3660,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "is@npm:3.3.0"
+  checksum: 81fad3b40c606984c2d0699207c4c48d2a0d29cc834b274d0b74c172f3eeebdb981301fe0d690ce090a96bf021a8a1f8b1325262ad9870c525e557ac4a559c56
+  languageName: node
+  linkType: hard
+
 "isarray@npm:~1.0.0":
   version: 1.0.0
   resolution: "isarray@npm:1.0.0"
@@ -3987,6 +3994,7 @@ __metadata:
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.7
     babel-loader: ^8.2.5
     html-webpack-plugin: ^5.5.0
+    razor-partial-views-webpack-plugin: ^3.0.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-refresh: ^0.14.0
@@ -4524,6 +4532,17 @@ __metadata:
     iconv-lite: 0.4.24
     unpipe: 1.0.0
   checksum: 5362adff1575d691bb3f75998803a0ffed8c64eabeaa06e54b4ada25a0cd1b2ae7f4f5ec46565d1bec337e08b5ac90c76eaa0758de6f72a633f025d754dec29e
+  languageName: node
+  linkType: hard
+
+"razor-partial-views-webpack-plugin@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "razor-partial-views-webpack-plugin@npm:3.0.1"
+  dependencies:
+    templated-assets-webpack-plugin: ^3.0.1
+  peerDependencies:
+    webpack: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+  checksum: 0ded1b76218461c364f75b443c23770cebfb70f83ea20c74585aea85d254afddcc46562ca8b8f227f8a552527a3ae62fe0b01c033f0ae5731847e485869f6892
   languageName: node
   linkType: hard
 
@@ -5205,6 +5224,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"templated-assets-webpack-plugin@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "templated-assets-webpack-plugin@npm:3.0.1"
+  dependencies:
+    is: ^3.3.0
+    mkdirp: ^1.0.4
+    webpack-sources: ^3.2.2
+  peerDependencies:
+    webpack: ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
+  checksum: c8a9f0d740d080694cf8ca8366ca2058221eadd9089d80f09ca59df945424f597413ff92f17f14b93cc88bec8a533c6efb3dc2b3175233fa76874de3da187f67
+  languageName: node
+  linkType: hard
+
 "terser-webpack-plugin@npm:^5.1.3":
   version: 5.3.5
   resolution: "terser-webpack-plugin@npm:5.3.5"
@@ -5525,7 +5557,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-sources@npm:^3.2.3":
+"webpack-sources@npm:^3.2.2, webpack-sources@npm:^3.2.3":
   version: 3.2.3
   resolution: "webpack-sources@npm:3.2.3"
   checksum: 989e401b9fe3536529e2a99dac8c1bdc50e3a0a2c8669cbafad31271eadd994bc9405f88a3039cd2e29db5e6d9d0926ceb7a1a4e7409ece021fe79c37d9c4607
