@@ -1,6 +1,12 @@
 import { useCallback, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
+import { HelloWorld } from './hello-world';
+
+// function HelloWorld() {
+//     return <div>yo</div>
+// }
+
 function App() {
     const [count, setCount] = useState(0);
 
@@ -9,7 +15,7 @@ function App() {
     }, [setCount]);
 
     return <>
-        <h1>Hello world</h1>
+        <HelloWorld />
         <div>Count: {count}</div>
         <button onClick={handleUpCount}>Up count</button>
     </>;

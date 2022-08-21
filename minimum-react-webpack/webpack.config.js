@@ -1,3 +1,4 @@
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = () => ({
@@ -18,6 +19,9 @@ module.exports = () => ({
 						presets: [
 							'@babel/preset-env',
 							['@babel/preset-react', { runtime: 'automatic' }]
+						],
+						plugins: [
+							'react-refresh/babel'
 						]
 					}
 				},
@@ -26,9 +30,10 @@ module.exports = () => ({
 		]
 	},
 	plugins: [
-		new HtmlWebpackPlugin()
+		new HtmlWebpackPlugin(),
+		new ReactRefreshWebpackPlugin()
 	],
 	devServer: {
-		open: true
+		open: true,
 	}
 });
