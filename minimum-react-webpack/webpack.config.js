@@ -34,7 +34,8 @@ export default (_, { mode }) => ({
 	},
 	plugins: [
 		// new HtmlWebpackPlugin(),
-		mode === 'development' && new ReactRefreshWebpackPlugin()
+		mode === 'development' && new ReactRefreshWebpackPlugin(),
+		new RazorPartialViewsWebpackPlugin()
 	].filter(Boolean),
 	devServer: {
 		client: {
