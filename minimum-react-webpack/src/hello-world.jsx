@@ -1,5 +1,5 @@
 export function HelloWorld() {
     return (
-        <h1 style={{ color: 'blue' }}>Hello world!!! (more again again)</h1>
+        <h1 style={{ color: 'black' }}>Hello world!!! (more again again)</h1>
     );
 }
