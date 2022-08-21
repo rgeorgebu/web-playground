@@ -1,7 +1,7 @@
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-module.exports = () => ({
+export default () => ({
 	entry: './src/index.jsx',
 	resolve: {
 		extensions: ['.jsx', '...']
